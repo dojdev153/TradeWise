@@ -23,10 +23,10 @@ export default function BenefitsSection() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                            Why Choose <span className="text-primary">TradeWise</span>?
+                            Why Choose <span className="text-primary">StockWise</span>?
                         </h2>
                         <p className="mb-8 text-lg text-muted-foreground">
-                            Built for the modern agricultural sector, TradeWise combines cutting-edge technology
+                            Built for the modern agricultural sector, StockWise combines cutting-edge technology
                             with practical, user-friendly features designed for real-world needs.
                         </p>
 

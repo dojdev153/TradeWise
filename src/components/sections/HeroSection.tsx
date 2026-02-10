@@ -33,7 +33,7 @@ export default function HeroSection() {
                     </h1>
 
                     <p className="text-lg text-muted-foreground md:text-xl">
-                        TradeWise provides real-time tracking, data-driven insights, and transparent planning
+                        StockWise provides real-time tracking, data-driven insights, and transparent planning
                         for farmers, veterinarians, and authorities across the nation.
                     </p>
 

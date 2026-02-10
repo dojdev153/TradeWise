@@ -23,27 +23,18 @@ export default function PricingSection() {
     ]
 
     return (
-        <section id="pricing" className="relative overflow-hidden bg-white py-16 md:py-24 lg:py-32">
-            {/* Dynamic Geometric Background Elements */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {/* ribbon 1 - Primary - Spans whole screen */}
-                <motion.div
-                    initial={{ x: '-100%', rotate: -15 }}
-                    whileInView={{ x: '0%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="absolute top-[20%] left-[-50%] h-[200px] w-[200%] bg-[#590156] opacity-100"
-                />
+        <section id="pricing" className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-white">
+            {/* Stripe 1: Upper ribbon */}
+            <div
+                className="absolute top-[35%] left-[-25%] w-[150%] h-[80px] bg-[#590156] z-0 pointer-events-none"
+                style={{ transform: 'rotate(-15deg)' }}
+            />
 
-                {/* ribbon 2 - Layered - Spans whole screen */}
-                <motion.div
-                    initial={{ x: '100%', rotate: -15 }}
-                    whileInView={{ x: '0%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.4, ease: "easeOut", delay: 0.1 }}
-                    className="absolute top-[35%] left-[-50%] h-[150px] w-[200%] bg-[#590156]/60 shadow-2xl"
-                />
-            </div>
+            {/* Stripe 2: Lower ribbon */}
+            <div
+                className="absolute top-[50%] left-[-25%] w-[150%] h-[80px] bg-[#590156] z-0 pointer-events-none"
+                style={{ transform: 'rotate(-15deg)' }}
+            />
 
             <div className="container relative z-10 mx-auto px-4 md:px-6">
                 {/* Section Header */}
@@ -58,7 +49,7 @@ export default function PricingSection() {
                         Data-Driven Livestock Planning
                     </h2>
                     <p className="text-lg text-gray-600 md:text-xl">
-                        TradeWise turns livestock records into reliable, aggregated insights that support planning,
+                        StockWise turns livestock records into reliable, aggregated insights that support planning,
                         disease prevention, and resource allocation at district and provincial levels.
                     </p>
                 </motion.div>
@@ -166,7 +157,7 @@ export default function PricingSection() {
                 >
                     <p className="flex items-center justify-center gap-2 text-sm text-gray-500 bg-white/50 backdrop-blur-sm p-2 rounded-full inline-flex mx-auto">
                         <BarChart3 className="h-4 w-4 text-[#590156]" />
-                        All insights are aggregated and anonymized. TradeWise does not share individual farm or personal data.
+                        All insights are aggregated and anonymized. StockWise does not share individual farm or personal data.
                     </p>
                 </motion.div>
             </div>

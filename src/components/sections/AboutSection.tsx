@@ -36,7 +36,7 @@ export default function AboutSection() {
                     className="mx-auto mb-12 max-w-3xl text-center"
                 >
                     <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                        What is <span className="text-primary">TradeWise</span>?
+                        What is <span className="text-primary">StockWise</span>?
                     </h2>
                     <p className="text-lg text-muted-foreground">
                         A comprehensive platform designed to revolutionize agricultural trade and stock management

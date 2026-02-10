@@ -6,7 +6,7 @@ export default function Navbar() {
             <nav className="container mx-auto rounded-full border bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="flex h-16 items-center justify-between px-6 md:px-8">
                     <div className="flex items-center">
-                        <span className="text-2xl font-bold text-primary">TradeWise</span>
+                        <span className="text-2xl font-bold text-primary">StockWise</span>
                     </div>
 
                     <div className="hidden items-center gap-6 md:flex">

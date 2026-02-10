@@ -106,8 +106,8 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li className="flex items-start gap-2 text-sm text-gray-600">
                                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                                <a href="mailto:info@tradewise.com" className="transition-colors hover:text-[#590156]">
-                                    info@tradewise.com
+                                <a href="mailto:info@stockwise.com" className="transition-colors hover:text-[#590156]">
+                                    info@stockwise.com
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-sm text-gray-600">
@@ -125,7 +125,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Large Background TradeWise Text with Gradient - Positioned at bottom */}
+            {/* Large Background StockWise Text with Gradient - Positioned at bottom */}
             <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center overflow-hidden leading-[0]">
                 <span
                     className="block text-[100px] font-black uppercase leading-[0.85] md:text-[140px] lg:text-[200px]"
@@ -138,14 +138,14 @@ export default function Footer() {
                         marginBottom: '0',
                     }}
                 >
-                    TradeWise
+                    StockWise
                 </span>
             </div>
 
             {/* Copyright positioned on top of watermark */}
             <div className="absolute bottom-12 left-0 right-0 z-20 text-center md:bottom-16 lg:bottom-20">
                 <p className="text-sm font-medium text-gray-700">
-                    © {currentYear} TradeWise. All rights reserved.
+                    © {currentYear} StockWise. All rights reserved.
                 </p>
             </div>
         </footer>

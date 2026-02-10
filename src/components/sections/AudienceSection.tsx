@@ -39,7 +39,7 @@ export default function AudienceSection() {
                         Who It's <span className="text-primary">For</span>
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        TradeWise serves every stakeholder in the agricultural ecosystem
+                        StockWise serves every stakeholder in the agricultural ecosystem
                     </p>
                 </motion.div>
 
