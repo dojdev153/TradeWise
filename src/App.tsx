@@ -14,6 +14,9 @@ import AuthLayout from "./components/auth/AuthLayout"
 import LoginPage from "./components/auth/LoginPage"
 import RegisterPage from "./components/auth/RegisterPage"
 
+// Dashboard Components
+import FarmerDashboard from "./components/dashboard/FarmerDashboard"
+
 // Layout for the landing page (Navbar + Footer)
 const LandingLayout = () => {
   return (
@@ -56,6 +59,9 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
         </Route>
+
+        {/* Dashboard Routes */}
+        <Route path="/dashboard" element={<FarmerDashboard />} />
       </Routes>
     </Router>
   )
