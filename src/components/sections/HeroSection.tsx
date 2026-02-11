@@ -32,7 +32,7 @@ export default function HeroSection() {
                 <div
                     className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] opacity-30 z-[0] hidden md:block"
                     style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%23590156'/%3E%3C/svg%3E")`,
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%239ca3af'/%3E%3C/svg%3E")`,
                         transform: 'rotate(-50deg)'
                     }}
                 />
@@ -61,7 +61,7 @@ export default function HeroSection() {
                 <div
                     className="absolute top-[15%] left-[-5%] w-[400px] h-[600px] opacity-30 z-[0] hidden md:block"
                     style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%23590156'/%3E%3C/svg%3E")`,
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%239ca3af'/%3E%3C/svg%3E")`,
                         transform: 'rotate(45deg)'
                     }}
                 />
