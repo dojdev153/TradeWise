@@ -12,12 +12,70 @@ export default function HeroSection() {
 
     return (
         <section id="home" className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/30 to-white py-20 md:py-32">
-            {/* Decorative background wave - inspired by template */}
-            <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-tl from-primary/20 via-primary/10 to-transparent"
-                style={{
-                    clipPath: "polygon(0 40%, 15% 35%, 30% 40%, 45% 30%, 60% 35%, 75% 25%, 90% 30%, 100% 25%, 100% 100%, 0 100%)"
-                }}
-            />
+            {/* Abstract Geometric Background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* --- RIGHT SIDE (Decorative - Purple Dominant) --- */}
+
+                {/* Large purple stripe - main focal */}
+                <div
+                    className="absolute top-[-10%] right-[-5%] w-[50%] h-[600px] bg-[#590156] opacity-90 z-[1] hidden md:block"
+                    style={{ transform: 'rotate(-50deg)' }}
+                />
+
+                {/* Secondary purple stripe */}
+                <div
+                    className="absolute top-[30%] right-[10%] w-[35%] h-[400px] bg-[#590156] opacity-65 z-[2] hidden md:block"
+                    style={{ transform: 'rotate(-50deg)' }}
+                />
+
+                {/* Dotted pattern overlay - Bottom Right */}
+                <div
+                    className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] opacity-30 z-[0] hidden md:block"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%23590156'/%3E%3C/svg%3E")`,
+                        transform: 'rotate(-50deg)'
+                    }}
+                />
+
+                {/* --- LEFT SIDE (Content - Subtle Gray Texture) --- */}
+
+                {/* Primary gray stripe */}
+                <div
+                    className="absolute top-[10%] left-[-10%] w-[40%] h-[300px] bg-gray-200 opacity-25 z-[1]"
+                    style={{ transform: 'rotate(-50deg)' }}
+                />
+
+                {/* Secondary soft gray stripe for texture */}
+                <div
+                    className="absolute top-[40%] left-[-20%] w-[60%] h-[200px] bg-gray-100 opacity-20 z-[0]"
+                    style={{ transform: 'rotate(-50deg)' }}
+                />
+
+                {/* Bottom accent gray stripe */}
+                <div
+                    className="absolute bottom-[10%] left-[10%] w-[30%] h-[150px] bg-gray-200 opacity-15 z-[0]"
+                    style={{ transform: 'rotate(-50deg)' }}
+                />
+
+                {/* Dotted pattern overlay - Left Side */}
+                <div
+                    className="absolute top-[15%] left-[-5%] w-[400px] h-[600px] opacity-30 z-[0] hidden md:block"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='3' height='3' fill='%23590156'/%3E%3C/svg%3E")`,
+                        transform: 'rotate(45deg)'
+                    }}
+                />
+
+                {/* --- MOBILE OPTIMIZATIONS --- */}
+                <div
+                    className="absolute top-[-5%] right-[-20%] w-[80%] h-[200px] bg-[#590156] opacity-80 z-[1] md:hidden"
+                    style={{ transform: 'rotate(-45deg)' }}
+                />
+                <div
+                    className="absolute bottom-[20%] left-[-20%] w-[60%] h-[150px] bg-gray-100 opacity-60 z-[1] md:hidden"
+                    style={{ transform: 'rotate(-45deg)' }}
+                />
+            </div>
 
             <div className="container relative z-10 mx-auto grid gap-12 px-4 md:grid-cols-2 md:items-center md:px-6">
                 {/* Left: Text Content */}
@@ -124,16 +182,22 @@ export default function HeroSection() {
                 </motion.div>
             </div>
 
-            {/* Trusted by section */}
+            {/* Trusted by section - Floating Pills */}
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="container relative z-10 mx-auto mt-16 px-4 md:px-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="container relative z-10 mx-auto mt-16 flex justify-center px-4 md:px-6"
             >
-                <p className="mb-8 text-center text-sm uppercase tracking-wide text-muted-foreground">
-                    Trusted by Agricultural Authorities Nationwide
-                </p>
+                <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="bg-white/60 backdrop-blur-md border border-white/40 shadow-lg rounded-full px-8 py-3"
+                >
+                    <p className="text-sm font-medium uppercase tracking-wider text-gray-800">
+                        Trusted by Agricultural Authorities Nationwide
+                    </p>
+                </motion.div>
             </motion.div>
         </section>
     )
