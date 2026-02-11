@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 export default function Navbar() {
@@ -25,12 +26,16 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <Button variant="outline" size="sm" className="rounded-full">
-                            Send us an Email
-                        </Button>
-                        <Button size="sm" className="rounded-full">
-                            Get Started
-                        </Button>
+                        <Link to="/auth/login">
+                            <Button variant="ghost" size="sm" className="rounded-full">
+                                Sign In
+                            </Button>
+                        </Link>
+                        <Link to="/auth/register">
+                            <Button size="sm" className="rounded-full bg-[#590156] hover:bg-[#4a0148]">
+                                Get Started
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </nav>
