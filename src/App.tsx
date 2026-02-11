@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from "./components/layout/Navbar"
 import Footer from "./components/layout/Footer"
 import HeroSection from "./components/sections/HeroSection"
@@ -8,21 +9,55 @@ import HowItWorksSection from "./components/sections/HowItWorksSection"
 import BenefitsSection from "./components/sections/BenefitsSection"
 import PricingSection from "./components/sections/PricingSection"
 
-function App() {
+// Auth Components
+import AuthLayout from "./components/auth/AuthLayout"
+import LoginPage from "./components/auth/LoginPage"
+import RegisterPage from "./components/auth/RegisterPage"
+
+// Layout for the landing page (Navbar + Footer)
+const LandingLayout = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <FeaturesSection />
-        <AudienceSection />
-        <HowItWorksSection />
-        <BenefitsSection />
-        <PricingSection />
+        <Outlet />
       </main>
       <Footer />
     </div>
+  );
+};
+
+const LandingPage = () => {
+  return (
+    <>
+      <HeroSection />
+      <AboutSection />
+      <FeaturesSection />
+      <AudienceSection />
+      <HowItWorksSection />
+      <BenefitsSection />
+      <PricingSection />
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Landing Page Route */}
+        <Route path="/" element={<LandingLayout />}>
+          <Route index element={<LandingPage />} />
+        </Route>
+
+        {/* Authentication Routes */}
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route index element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 

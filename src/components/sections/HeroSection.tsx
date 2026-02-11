@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { TrendingUp, BarChart3, Users, Shield } from "lucide-react"
@@ -96,12 +97,16 @@ export default function HeroSection() {
                     </p>
 
                     <div className="flex flex-wrap gap-4">
-                        <Button size="lg" className="font-semibold">
-                            Get Started
-                        </Button>
-                        <Button size="lg" variant="outline" className="font-semibold">
-                            Learn More
-                        </Button>
+                        <Link to="/auth/register">
+                            <Button size="lg" className="font-semibold bg-[#590156] hover:bg-[#4a0148]">
+                                Get Started
+                            </Button>
+                        </Link>
+                        <Link to="/#about">
+                            <Button size="lg" variant="outline" className="font-semibold">
+                                Learn More
+                            </Button>
+                        </Link>
                     </div>
                 </motion.div>
 
