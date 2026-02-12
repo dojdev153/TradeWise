@@ -1,9 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button'; // Assuming you have a Button component
 import { Input } from '@/components/ui/input'; // Assuming you have an Input component
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function LoginPage() {
     return (
@@ -23,7 +21,7 @@ export default function LoginPage() {
                 <div className="space-y-2">
                     <div className="flex items-center justify-between">
                         <Label htmlFor="password">Password</Label>
-                        <Link to="/auth/forgot-password" ফিন className="text-sm font-medium text-[#590156] hover:underline">
+                        <Link to="/auth/forgot-password" className="text-sm font-medium text-[#590156] hover:underline">
                             Forgot password?
                         </Link>
                     </div>
