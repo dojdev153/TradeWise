@@ -7,10 +7,15 @@ import LivestockFilters from './filters/LivestockFilters';
 import LivestockTable from './table/LivestockTable';
 import BulkActionsBar from './table/BulkActionsBar';
 import TablePagination from './table/TablePagination';
+import AddLivestockModal from './modals/AddLivestockModal';
+import EditLivestockModal from './modals/EditLivestockModal';
+import ViewLivestockModal from './modals/ViewLivestockModal';
+import DeleteConfirmationDialog from './modals/DeleteConfirmationDialog';
 import { sampleLivestock, calculateLivestockStats } from '@/data/sampleLivestock';
 import type { Livestock, LivestockFilters as FiltersType } from '@/types/livestock';
 
 export default function MyLivestockPage() {
+    const [livestockList, setLivestockList] = useState<Livestock[]>(sampleLivestock);
     const [filters, setFilters] = useState<FiltersType>({
         search: '',
         type: 'All',
@@ -23,9 +28,19 @@ export default function MyLivestockPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(20);
 
+    // Modal States
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+    // Selected Animal State
+    const [selectedAnimal, setSelectedAnimal] = useState<Livestock | null>(null);
+    const [animalToDelete, setAnimalToDelete] = useState<string[]>([]); // Array of IDs to delete
+
     // Filter livestock based on criteria
     const filteredLivestock = useMemo(() => {
-        return sampleLivestock.filter(animal => {
+        return livestockList.filter(animal => {
             // Search filter
             if (filters.search) {
                 const searchLower = filters.search.toLowerCase();
@@ -66,7 +81,7 @@ export default function MyLivestockPage() {
 
             return true;
         });
-    }, [filters]);
+    }, [filters, livestockList]);
 
     // Pagination
     const paginatedLivestock = useMemo(() => {
@@ -75,7 +90,7 @@ export default function MyLivestockPage() {
     }, [filteredLivestock, currentPage, pageSize]);
 
     const totalPages = Math.ceil(filteredLivestock.length / pageSize);
-    const stats = calculateLivestockStats(sampleLivestock);
+    const stats = calculateLivestockStats(livestockList);
 
     const hasActiveFilters = filters.search !== '' || filters.type !== 'All' ||
         filters.healthStatus !== 'All' || filters.gender !== 'All' || filters.ageRange !== 'All';
@@ -105,36 +120,63 @@ export default function MyLivestockPage() {
         // In a real app, you'd filter for sick, under treatment, quarantined, or overdue vaccinations
     };
 
+    // --- Modal Handlers ---
+
+    const handleAddNew = (data: Partial<Livestock>) => {
+        const newAnimal = {
+            ...data,
+            id: `LS-${Math.floor(Math.random() * 10000)}`, // Generate random ID
+        } as Livestock;
+        setLivestockList([newAnimal, ...livestockList]);
+        setIsAddModalOpen(false);
+    };
+
+    const handleEditSave = (id: string, data: Partial<Livestock>) => {
+        setLivestockList(livestockList.map(item =>
+            item.id === id ? { ...item, ...data } : item
+        ));
+        setIsEditModalOpen(false);
+        setSelectedAnimal(null);
+    };
+
     const handleView = (animal: Livestock) => {
-        console.log('View:', animal);
-        // TODO: Open view modal
+        setSelectedAnimal(animal);
+        setIsViewModalOpen(true);
     };
 
     const handleEdit = (animal: Livestock) => {
-        console.log('Edit:', animal);
-        // TODO: Open edit modal
+        setSelectedAnimal(animal);
+        setIsEditModalOpen(true);
     };
 
     const handleDelete = (animal: Livestock) => {
-        console.log('Delete:', animal);
-        // TODO: Open delete confirmation
+        setAnimalToDelete([animal.id]);
+        setIsDeleteDialogOpen(true);
+    };
+
+    const handleBulkDelete = () => {
+        setAnimalToDelete(selectedIds);
+        setIsDeleteDialogOpen(true);
+    };
+
+    const confirmDelete = () => {
+        setLivestockList(livestockList.filter(item => !animalToDelete.includes(item.id)));
+        setSelectedIds([]);
+        setAnimalToDelete([]);
+        setIsDeleteDialogOpen(false);
     };
 
     const handleBulkMarkHealthy = () => {
-        console.log('Mark healthy:', selectedIds);
-        // TODO: Implement bulk action
+        setLivestockList(livestockList.map(item =>
+            selectedIds.includes(item.id) ? { ...item, healthStatus: 'Healthy' } : item
+        ));
         setSelectedIds([]);
     };
 
     const handleBulkMarkSick = () => {
-        console.log('Mark sick:', selectedIds);
-        // TODO: Implement bulk action
-        setSelectedIds([]);
-    };
-
-    const handleBulkDelete = () => {
-        console.log('Delete selected:', selectedIds);
-        // TODO: Implement bulk deletion
+        setLivestockList(livestockList.map(item =>
+            selectedIds.includes(item.id) ? { ...item, healthStatus: 'Sick' } : item
+        ));
         setSelectedIds([]);
     };
 
@@ -169,7 +211,10 @@ export default function MyLivestockPage() {
                         </div>
 
                         {/* Add Livestock Button */}
-                        <Button className="bg-[#590156] hover:bg-[#450142] rounded-xl">
+                        <Button
+                            className="bg-[#590156] hover:bg-[#450142] rounded-xl"
+                            onClick={() => setIsAddModalOpen(true)}
+                        >
                             <Plus className="h-5 w-5 mr-2" />
                             Add Livestock
                         </Button>
@@ -234,6 +279,37 @@ export default function MyLivestockPage() {
                     </div>
                 )}
             </div>
+
+            {/* Modals */}
+            <AddLivestockModal
+                isOpen={isAddModalOpen}
+                onClose={() => setIsAddModalOpen(false)}
+                onAdd={handleAddNew}
+            />
+
+            <EditLivestockModal
+                isOpen={isEditModalOpen}
+                onClose={() => setIsEditModalOpen(false)}
+                onSave={handleEditSave}
+                initialData={selectedAnimal}
+            />
+
+            <ViewLivestockModal
+                isOpen={isViewModalOpen}
+                onClose={() => setIsViewModalOpen(false)}
+                animal={selectedAnimal}
+            />
+
+            <DeleteConfirmationDialog
+                isOpen={isDeleteDialogOpen}
+                onClose={() => setIsDeleteDialogOpen(false)}
+                onConfirm={confirmDelete}
+                title={animalToDelete.length > 1 ? "Delete Multiple Animals?" : "Delete Animal?"}
+                description={animalToDelete.length > 1
+                    ? `Are you sure you want to delete these ${animalToDelete.length} animals? This action cannot be undone.`
+                    : "Are you sure you want to delete this animal? This action cannot be undone."
+                }
+            />
         </DashboardLayout>
     );
 }
