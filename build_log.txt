@@ -1,0 +1,7 @@
+
+> stockwise@0.0.0 build
+> tsc -b && vite build
+
+src/components/auth/AuthLayout.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/auth/LoginPage.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/auth/LoginPage.tsx(6,1): error TS6192: All imports in import declaration are unused.
