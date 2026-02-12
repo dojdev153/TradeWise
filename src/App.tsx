@@ -21,6 +21,7 @@ import HealthRecordsPage from "./components/dashboard/health/HealthRecordsPage"
 import BudgetPage from "./components/dashboard/budget/BudgetPage"
 import FarmPlannerPage from "./components/dashboard/planner/FarmPlannerPage"
 import InventoryPage from "./components/dashboard/inventory/InventoryPage"
+import ReportsPage from "./components/dashboard/reports/ReportsPage"
 
 // Layout for the landing page (Navbar + Footer)
 const LandingLayout = () => {
@@ -72,6 +73,7 @@ function App() {
         <Route path="/dashboard/budget" element={<BudgetPage />} />
         <Route path="/dashboard/planner" element={<FarmPlannerPage />} />
         <Route path="/dashboard/inventory" element={<InventoryPage />} />
+        <Route path="/dashboard/reports" element={<ReportsPage />} />
       </Routes>
     </Router>
   )
