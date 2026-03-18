@@ -14,8 +14,8 @@ export default function FarmerDashboard() {
             <div className="space-y-6">
                 {/* Welcome Section */}
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-800">Good Morning, David</h2>
-                    <p className="text-gray-500">Here's your farm's performance update.</p>
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900">Good Morning, David</h2>
+                    <p className="text-gray-500 mt-1">Here's your farm's performance update.</p>
                 </div>
 
                 {/* Top Summary Row */}
@@ -67,7 +67,7 @@ export default function FarmerDashboard() {
                     {/* Left Column (Main Charts/Feeds) - Spans 2 cols */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* Row: Quick Actions + Chart */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[220px]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <QuickActionsCard />
                             <LivestockChart />
                         </div>
@@ -81,12 +81,8 @@ export default function FarmerDashboard() {
 
                     {/* Right Column (Side Widgets) - Spans 1 col */}
                     <div className="space-y-6">
-                        <div className="h-[300px]">
-                            <BudgetCard />
-                        </div>
-                        <div className="h-[350px]">
-                            <UpcomingTasksCard />
-                        </div>
+                        <BudgetCard />
+                        <UpcomingTasksCard />
                     </div>
                 </div>
             </div>

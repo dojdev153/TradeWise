@@ -1,6 +1,7 @@
 import { Calendar, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 
 const tasks = [
     { id: 1, title: 'Vaccination Day - All Cattle', date: 'Tomorrow, 9:00 AM', priority: 'high' },
@@ -10,37 +11,39 @@ const tasks = [
 
 export default function UpcomingTasksCard() {
     return (
-        <div className="bg-white rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col h-full">
-            <div className="p-6 border-b border-gray-50 flex justify-between items-center">
-                <h3 className="font-bold text-gray-900 text-lg">Upcoming Activities</h3>
-                <Calendar className="h-5 w-5 text-gray-400" />
-            </div>
+        <Card className="flex flex-col h-full">
+            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                <CardTitle className="text-lg font-bold">Upcoming Activities</CardTitle>
+                <Calendar className="h-4 w-4 text-gray-400" />
+            </CardHeader>
 
-            <div className="p-4 space-y-1 flex-1">
-                {tasks.map((task) => (
-                    <div key={task.id} className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors">
-                        <Checkbox className="mt-1" />
-                        <div className="flex-1">
-                            <label className="text-sm font-semibold text-gray-800 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer">
-                                {task.title}
-                            </label>
-                            <p className="text-xs text-gray-500 mt-1.5">{task.date}</p>
+            <CardContent className="flex-1 overflow-y-auto pt-4 pb-2">
+                <div className="space-y-1">
+                    {tasks.map((task) => (
+                        <div key={task.id} className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                            <Checkbox className="mt-1" />
+                            <div className="flex-1">
+                                <label className="text-sm font-semibold text-gray-800 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer">
+                                    {task.title}
+                                </label>
+                                <p className="text-xs text-gray-500 mt-1.5">{task.date}</p>
+                            </div>
+                            {task.priority === 'high' && (
+                                <span className="w-2 h-2 rounded-full bg-purple-600 mt-1.5" title="High Priority" />
+                            )}
+                            {task.priority === 'medium' && (
+                                <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5" title="Medium Priority" />
+                            )}
                         </div>
-                        {task.priority === 'high' && (
-                            <span className="w-2 h-2 rounded-full bg-purple-600 mt-1.5" title="High Priority" />
-                        )}
-                        {task.priority === 'medium' && (
-                            <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5" title="Medium Priority" />
-                        )}
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </CardContent>
 
-            <div className="p-4 border-t border-gray-50">
-                <Button variant="ghost" className="w-full text-gray-600 hover:text-[#590156] text-sm items-center justify-between px-2">
+            <CardFooter className="pt-2 border-t px-6 py-4">
+                <Button variant="ghost" className="w-full text-gray-600 hover:text-[#590156] text-sm flex items-center justify-between px-2">
                     View Calendar <ChevronRight className="h-4 w-4" />
                 </Button>
-            </div>
-        </div>
+            </CardFooter>
+        </Card>
     );
 }

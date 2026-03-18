@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { cn } from '@/lib/utils';
 import { Plus, Table as TableIcon, Grid } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DashboardLayout from '../layout/DashboardLayout';
@@ -184,27 +185,27 @@ export default function MyLivestockPage() {
         <DashboardLayout>
             <div className="space-y-6">
                 {/* Page Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">My Livestock</h1>
+                        <h2 className="text-3xl font-bold tracking-tight text-gray-900">My Livestock</h2>
                         <p className="text-gray-500 mt-1">Manage and track all your farm animals</p>
                     </div>
                     <div className="flex items-center gap-3">
                         {/* View Toggle */}
                         <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
                             <Button
-                                variant={viewMode === 'table' ? 'default' : 'ghost'}
+                                variant={viewMode === 'table' ? 'secondary' : 'ghost'}
                                 size="sm"
                                 onClick={() => setViewMode('table')}
-                                className={viewMode === 'table' ? 'bg-white shadow-sm' : ''}
+                                className={cn("h-8 w-8 p-0", viewMode === 'table' ? 'bg-white shadow-sm' : '')}
                             >
                                 <TableIcon className="h-4 w-4" />
                             </Button>
                             <Button
-                                variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                                variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
                                 size="sm"
                                 onClick={() => setViewMode('grid')}
-                                className={viewMode === 'grid' ? 'bg-white shadow-sm' : ''}
+                                className={cn("h-8 w-8 p-0", viewMode === 'grid' ? 'bg-white shadow-sm' : '')}
                             >
                                 <Grid className="h-4 w-4" />
                             </Button>
@@ -212,10 +213,10 @@ export default function MyLivestockPage() {
 
                         {/* Add Livestock Button */}
                         <Button
-                            className="bg-[#590156] hover:bg-[#450142] rounded-xl"
+                            className="bg-[#590156] hover:bg-[#450142]"
                             onClick={() => setIsAddModalOpen(true)}
                         >
-                            <Plus className="h-5 w-5 mr-2" />
+                            <Plus className="h-4 w-4 mr-2" />
                             Add Livestock
                         </Button>
                     </div>

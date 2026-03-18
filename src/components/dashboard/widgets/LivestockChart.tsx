@@ -1,6 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const data = [
     { name: 'Cows', value: 120, color: '#590156' }, // Purple
@@ -11,18 +12,17 @@ const data = [
 
 export default function LivestockChart() {
     return (
-        <div className="bg-white rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] p-6 h-full flex flex-col">
-            <div className="flex justify-between items-center mb-6">
-                <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Livestock by Type</h3>
-                    <p className="text-sm text-gray-500">Current herd composition</p>
+        <Card className="h-full flex flex-col">
+            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                <div className="space-y-1">
+                    <CardTitle className="text-lg font-bold">Livestock by Type</CardTitle>
+                    <CardDescription>Current herd composition</CardDescription>
                 </div>
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400">
                     <MoreHorizontal className="h-4 w-4" />
                 </Button>
-            </div>
-
-            <div className="flex-1 w-full min-h-[200px]">
+            </CardHeader>
+            <CardContent className="flex-1 w-full min-h-[200px] pt-4">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                         <XAxis
@@ -48,7 +48,7 @@ export default function LivestockChart() {
                         </Bar>
                     </BarChart>
                 </ResponsiveContainer>
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     );
 }
