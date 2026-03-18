@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function QuickActionsCard() {
     return (
-        <Card className="bg-[#590156] text-white border-none shadow-lg overflow-hidden relative">
+        <Card className="bg-[#590156] text-white border-none shadow-lg overflow-hidden relative h-full">
             {/* Subtle decorative element */}
             <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
 

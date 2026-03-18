@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button'; // Assuming you have a Button component
 import { Input } from '@/components/ui/input'; // Assuming you have an Input component
 import { Label } from '@/components/ui/label';
 
 export default function LoginPage() {
+    const navigate = useNavigate();
+
+    const handleSignIn = () => {
+        navigate('/dashboard');
+    };
     return (
         <div className="space-y-6">
             <div className="space-y-2 text-center">
@@ -28,7 +33,10 @@ export default function LoginPage() {
                     <Input id="password" type="password" required />
                 </div>
 
-                <Button className="w-full bg-[#590156] hover:bg-[#4a0148]">
+                <Button
+                    className="w-full bg-[#590156] hover:bg-[#4a0148]"
+                    onClick={handleSignIn}
+                >
                     Sign In
                 </Button>
             </div>

@@ -65,18 +65,14 @@ export default function FarmerDashboard() {
                 {/* Main Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Left Column (Main Charts/Feeds) - Spans 2 cols */}
-                    <div className="lg:col-span-2 space-y-6">
-                        {/* Row: Quick Actions + Chart */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <QuickActionsCard />
-                            <LivestockChart />
-                        </div>
+                    <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-min">
+                        {/* Row 1: Quick Actions + Chart */}
+                        <QuickActionsCard />
+                        <LivestockChart />
 
-                        {/* Row: Health Alerts + Recent Activity */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <HealthAlertsCard />
-                            <RecentActivityCard />
-                        </div>
+                        {/* Row 2: Health Alerts + Recent Activity */}
+                        <HealthAlertsCard />
+                        <RecentActivityCard />
                     </div>
 
                     {/* Right Column (Side Widgets) - Spans 1 col */}

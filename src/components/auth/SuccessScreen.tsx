@@ -38,9 +38,14 @@ export default function SuccessScreen({ role }: { role: string }) {
                 </p>
             </div>
 
-            <div className="pt-8">
-                <Link to="/auth/login">
+            <div className="pt-8 space-y-3">
+                <Link to="/dashboard">
                     <Button className="w-full bg-[#590156] hover:bg-[#4a0148]" size="lg">
+                        Go to Dashboard
+                    </Button>
+                </Link>
+                <Link to="/auth/login" className="block">
+                    <Button variant="outline" className="w-full" size="lg">
                         Back to Login
                     </Button>
                 </Link>
